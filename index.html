@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPLAST (SMC-PRIVATE) LIMITED</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #388e3c;
+            --accent-color: #e8f5e9;
+            --text-dark: #212121;
+            --text-light: #757575;
+            --bg-light: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin-left: 1.5rem;
+        }
+
+        .navbar ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.85), rgba(56, 142, 60, 0.85)), url('https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            color: var(--white);
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0 auto;
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        /* Corporate Registration Table Style */
+        .reg-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .reg-table th, .reg-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .reg-table th {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            font-weight: 600;
+            width: 35%;
+        }
+
+        .reg-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Services */
+        .services-section {
+            background-color: var(--white);
+            padding: 4rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: var(--bg-light);
+            padding: 2.5rem 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1a1a1a;
+            color: #aeaeae;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">PPLAST (SMC-PVT) LTD</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Corporate Profile</a></li>
+            <li><a href="#services">Our Operations</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" id="home">
+        <h1>PPLAST (SMC-PRIVATE) LIMITED</h1>
+        <p>Leading corporate enterprise providing premium industrial solutions. Fully verified, compliant, and officially registered under the Federal Board of Revenue (FBR) Pakistan.</p>
+        <a href="#contact" class="btn">Connect With Us</a>
+    </header>
+
+    <section class="container" id="about">
+        <h2 class="section-title">Corporate Profile & Registration</h2>
+        <div class="grid-2">
+            <div class="about-text">
+                <p>Welcome to <strong>PPLAST (SMC-PRIVATE) LIMITED</strong>. We are a premier single-member corporate entity registered with the Federal Board of Revenue (FBR) in Pakistan. Operating under stable state compliance since our legal inception, we pride ourselves on building transparent business operations.</p>
+                <p>Our dedicated management infrastructure ensures industrial compliance, commercial standard tracking, and reliable execution of trade operations across regional jurisdictions.</p>
+            </div>
+            <div>
+                <table class="reg-table">
+                    <tr>
+                        <th>Company Name</th>
+                        <td>PPLAST (SMC-PRIVATE) LIMITED</td>
+                    </tr>
+                    <tr>
+                        <th>Registration No.</th>
+                        <td>0053879</td>
+                    </tr>
+                    <tr>
+                        <th>Incorporation No.</th>
+                        <td>850406044</td>
+                    </tr>
+                    <tr>
+                        <th>Incorporation Date</th>
+                        <td>10-February-2002</td>
+                    </tr>
+                    <tr>
+                        <th>Date of FBR Reg.</th>
+                        <td>10-February-2006</td>
+                    </tr>
+                    <tr>
+                        <th>Type of Person</th>
+                        <td>Company</td>
+                    </tr>
+                    <tr>
+                        <th>Tax Office</th>
+                        <td>CRO Lahore</td>
+                    </tr>
+                    <tr>
+                        <th>Activity Type</th>
+                        <td>Business</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <h2 class="section-title">Our Premium Infrastructure</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Industrial Supply & Manufacturing</h3>
+                <p>Delivering high-grade commercial supplies designed with precision to serve versatile multi-scale market ecosystems.</p>
+            </div>
+            <div class="service-card">
+                <h3>Corporate Management</h3>
+                <p>Integrated workflow control, risk assessment protocols, and streamlined resource architectural setups for sustainable business goals.</p>
+            </div>
+            <div class="service-card">
+                <h3>B2B Operations</h3>
+                <p>Transparent structural trading setups and logistics network provisions tailored to corporate standards and compliance laws.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="contact">
+        <h2 class="section-title">Official Contact Base</h2>
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text-dark);">
+                <strong>Registered Corporate Address:</strong><br>
+                Office 98 Y Block Dha Phase 3 Lahore, 54000 Pakistan
+            </p>
+            <p style="color: var(--text-light); font-size: 0.95rem;">
+                Tax Administration Office: Chief Commissioner Corporate Regional Office (CRO) Lahore.
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-brand">PPLAST (SMC-PRIVATE) LIMITED</div>
+        <p>FBR Taxpayer Registration Verified Corporate Portal.</p>
+        <p>&copy; 2026 PPLAST (SMC-Private) Limited. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
